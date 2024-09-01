@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 300px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .heading {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            cursor: default;
+        }
+        .heading.green { background-color: #28a745; color: #fff; }
+        .heading.blue { background-color: #007bff; color: #fff; }
+        .heading.yellow { background-color: #ffc107; color: #000; }
+        .slider {
+            display: block;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .button {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 48%;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .button.in {
+            background-color: grey; /* Default color for IN buttons */
+            color: #fff;
+        }
+        .button.out {
+            background-color: grey; /* Default color for OUT buttons */
+            color: #fff;
+        }
+        .button.selected-in {
+            background-color: #28a745; /* Green for selected IN buttons */
+        }
+        .button.selected-out {
+            background-color: #dc3545; /* Red for selected OUT buttons */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading green">119</div>
+        <div id="slider119" class="slider">
+            <div class="button-container">
+                <button id="btn119-in" class="button in" onclick="selectButton('119', 'IN')">IN</button>
+                <button id="btn119-out" class="button out" onclick="selectButton('119', 'OUT')">OUT</button>
+            </div>
+        </div>
+
+        <div class="heading green">191</div>
+        <div id="slider191" class="slider">
+            <div class="button-container">
+                <button id="btn191-in" class="button in" onclick="selectButton('191', 'IN')">IN</button>
+                <button id="btn191-out" class="button out" onclick="selectButton('191', 'OUT')">OUT</button>
+            </div>
+        </div>
+
+        <div class="heading blue">124</div>
+        <div id="slider124" class="slider">
+            <div class="button-container">
+                <button id="btn124-in" class="button in" onclick="selectButton('124', 'IN')">IN</button>
+                <button id="btn124-out" class="button out" onclick="selectButton('124', 'OUT')">OUT</button>
+            </div>
+        </div>
+
+        <div class="heading yellow">E Trailer</div>
+        <div id="sliderETrailer" class="slider">
+            <div class="button-container">
+                <button id="btnETrailer-in" class="button in" onclick="selectButton('ETrailer', 'IN')">IN</button>
+                <button id="btnETrailer-out" class="button out" onclick="selectButton('ETrailer', 'OUT')">OUT</button>
+            </div>
+        </div>
+
+        <div class="heading yellow">Meert</div>
+        <div id="sliderMeert" class="slider">
+            <div class="button-container">
+                <button id="btnMeert-in" class="button in" onclick="selectButton('Meert', 'IN')">IN</button>
+                <button id="btnMeert-out" class="button out" onclick="selectButton('Meert', 'OUT')">OUT</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectButton(sliderId, buttonType) {
+            // Get all buttons for the given sliderId
+            const inButton = document.getElementById(`btn${sliderId}-in`);
+            const outButton = document.getElementById(`btn${sliderId}-out`);
+
+            // Remove selected classes from both buttons
+            inButton.classList.remove('selected-in');
+            outButton.classList.remove('selected-out');
+
+            // Set default gray color for both buttons
+            inButton.classList.add('in');
+            outButton.classList.add('out');
+
+            // Add selected class to the clicked button
+            if (buttonType === 'IN') {
+                inButton.classList.add('selected-in');
+            } else {
+                outButton.classList.add('selected-out');
+            }
+        }
+
+        // Set default selected buttons
+        document.querySelectorAll('.button-container').forEach(container => {
+            container.querySelector('.button.in').classList.add('selected-in');
+        });
+    </script>
+</body>
+</html>
